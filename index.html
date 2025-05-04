@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Wiki</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    header {
+      background-color:black;
+      color: transparent;
+      color: #fff;
+      display: flex;
+      position: fixed;
+      width: 100%;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 30px;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #00ffe1;
+      text-decoration: none;
+      flex: 1;
+    }
+    nav {
+      flex: 2;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #00ffe1;
+    }
+    .search-bar {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+    }
+    .search-bar input {
+      width: 80%;
+      padding: 8px 12px;
+      border-radius: 20px;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+    }
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+      }
+      .search-bar input {
+        width: 100%;
+      }
+    }
+
+    main {
+  padding: 40px 30px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2.5rem;
+  color: #00ffe1;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background-color: #1f1f1f;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s;
+  
+
+
+
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card img {
+  width: 280px;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card h3 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.card-content {
+  padding: 15px;
+}
+
+.card-content h3 {
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+  color: #00ffe1;
+}
+
+.card-content p {
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+
+
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="#" class="logo">GameWiki</a>
+
+  <nav>
+    <a href="#">Ana Sayfa</a>
+    <a href="#">Oyunlar</a>
+    <a href="#">Hakkında</a>
+    <a href="#">İletişim</a>
+  </nav>
+
+  <div class="search-bar">
+    <input type="text" placeholder="Oyun ara...">
+  </div>
+</header>
+<main>
+    <h1 style="margin-top: 50px;">Popüler Oyunlar</h1>
+  
+    <div class="card-container">
+     
+      <div class="card">
+         <a href="kategori/the-witcher-3.html">
+        <img src="https://upload.wikimedia.org/wikipedia/en/0/0c/Witcher_3_cover_art.jpg" alt="The Witcher 3">
+        <div class="card-content">
+          <h3>The Witcher 3: Wild Hunt</h3>
+          <p>Geniş açık dünyası ve derin hikayesiyle unutulmaz bir rol yapma deneyimi sunuyor.</p>
+        </a>
+        </div>
+      </div>
+  
+      <div class="card">
+       <a href="kategori/gta-V.html">
+        <img src="https://upload.wikimedia.org/wikipedia/en/a/a5/Grand_Theft_Auto_V.png" alt="GTA 5">
+        <div class="card-content">
+          <h3>Grand Theft Auto V</h3>
+          <p>Devasa bir şehirde özgürce dolaşabileceğin aksiyon dolu bir açık dünya macerası.</p>
+         
+        </a>
+        </div>
+      
+      </div>
+  
+      <div class="card">
+        <a href="kategori/rdr2.html">
+        <img src="https://upload.wikimedia.org/wikipedia/en/4/44/Red_Dead_Redemption_II.jpg" alt="Red Dead Redemption 2">
+        <div class="card-content">
+          <h3>Red Dead Redemption 2</h3>
+          <p>Vahşi Batı'nın son dönemlerinde geçen etkileyici bir hikaye ve açık dünya deneyimi.</p>
+        </a>
+        </div>
+      </div>
+  
+      <div class="card">
+        <a href="kategori/valorant.html">
+        <img src="images/valorant.jpg" alt="Valorant">
+        <div class="card-content">
+          <h3>Valorant</h3>
+          <p>Yetenek temelli rekabetçi bir nişancı oyunu; hızlı tempolu 5v5 maçlar sunuyor.</p>
+        </a>
+        </div>
+
+      </div>
+  
+      <div class="card">
+        <a href="kategori/minecraft.html">
+        <img src="images/minecraft.jpeg" alt="Minecraft">
+        <div class="card-content">
+          <h3>Minecraft</h3>
+          <p>Sınırsız bir yaratıcılık dünyası; keşfet, inşa et ve hayatta kal!</p>
+        </a>
+        </div>
+      </div>
+  
+      <div class="card">
+        <a href="kategori/elder-ring.html">
+        <img src="https://upload.wikimedia.org/wikipedia/en/b/b9/Elden_Ring_Box_art.jpg" alt="Elden Ring">
+        <div class="card-content">
+          <h3>Elden Ring</h3>
+          <p>Zorlu dövüş mekanikleri ve keşfedilecek devasa bir fantezi dünyası sunan aksiyon-RPG.</p>
+        </a>
+        </div>
+      </div>
+  
+      <div class="card">
+        <a href="kategori/lol.html">
+        <img src="images/lol.jpeg" alt="League of Legends">
+        <div class="card-content">
+          <h3>League of Legends</h3>
+          <p>Strateji ve takım oyununa dayalı, dünyanın en popüler MOBA oyunlarından biri.</p>
+        </a>
+        </div>
+      </div>
+  
+      <div class="card">
+        <a href="kategori/fortnite.html">
+        <img src="images/fortnite.jpeg" alt="Fortnite">
+        <div class="card-content">
+          <h3>Fortnite</h3>
+          <p>Battle Royale türünde hızlı tempolu savaşlar ve yaratıcı inşa mekanikleri sunuyor.</p>
+        </a>
+        </div>
+      </div>
+  
+      <div class="card">
+        <a href="kategori/Cyberpunk.html">
+        <img src="https://upload.wikimedia.org/wikipedia/en/9/9f/Cyberpunk_2077_box_art.jpg" alt="Cyberpunk 2077">
+        <div class="card-content">
+          <h3>Cyberpunk 2077</h3>
+          <p>Geleceğin distopik şehirlerinde geçen, detaylı bir açık dünya RPG deneyimi.</p>
+        </a>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+</body>
+</html>

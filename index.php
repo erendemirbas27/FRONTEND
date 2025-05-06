@@ -142,8 +142,8 @@ h1 {
   <nav>
     <a href="#">Ana Sayfa</a>
     <a href="#">Oyunlar</a>
-    <a href="#">Hakkında</a>
-    <a href="#">İletişim</a>
+    <a href="hakkinda.php">Hakkında</a>
+    <a href="iletişim.php">İletişim</a>
   </nav>
 
   <div class="search-bar">
@@ -252,3 +252,29 @@ h1 {
   
 </body>
 </html>
+
+
+<?php
+
+include("db.php"); 
+
+if(isset($_POST["isim"], $_POST["email"], $_POST["mesaj"]))
+{
+  $adsoyad=$_POST["isim"];
+  $email= $_POST["email"];
+  $mesaj=$_POST["mesaj"];
+
+  $ekle="INSERT INTO iletişim (AdSoyad, Email, Mesaj) VALUES ('".$adsoyad."','".$email."','".$mesaj."')";
+
+  if($conn->query($ekle)===true)
+  {
+    echo "<script>alert('Mesajınız Başarı ile iletilmiştir')</script>";
+
+  }
+  else{
+    echo("mesajınız iletilmedi");
+  }
+
+}
+
+?>

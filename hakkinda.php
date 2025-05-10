@@ -1,3 +1,8 @@
+<?php 
+session_start();
+include("db.php");
+include("navbar.php");
+?>
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -12,29 +17,7 @@
       color: white;
     }
 
-    header {
-      background-color: #121212;
-      padding: 15px 10px;
-      text-align: center;
-    }
 
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: #ccc;
-      font-weight: bold;
-      font-size: 16px;
-    }
-
-    nav a:hover {
-      color: #fff;
-    }
 
     .container {
       max-width: 900px;
@@ -72,9 +55,6 @@
         font-size: 24px;
       }
 
-      nav a {
-        font-size: 14px;
-      }
 
       .container {
         margin: 20px 10px;
@@ -85,14 +65,7 @@
 </head>
 <body>
 
-<header>
-  <nav>
-    <a href="index.php">Ana Sayfa</a>
-    <a href="#">Oyunlar</a>
-    <a href="hakkinda.php">Hakkında</a>
-    <a href="iletişim.php">İletişim</a>
-  </nav>
-</header>
+
 
 <div class="container">
   <h1>GameWiki Projesi Hakkında</h1>
@@ -117,8 +90,10 @@
     <div class="tech-badges">
       <span>HTML5</span>
       <span>CSS3</span>
-      <span>JavaScript (isteğe bağlı)</span>
+      <span>PHP</span>
+      <span>JavaScript </span>
       <span>VS Code</span>
+      <span>XAMPP CONTROL PANEL</span>
     </div>
   </div>
 

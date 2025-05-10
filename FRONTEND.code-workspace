@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../BACKEND/includes"
+		},
+		{
+			"path": "../BACKEND/Oyunlar"
+		}
+	],
+	"settings": {}
+}

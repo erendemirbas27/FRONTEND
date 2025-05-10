@@ -1,69 +1,50 @@
+<?php 
+session_start();
+include("db.php");
+include("navbar.php");
+
+// İletişim formu işleme
+if (isset($_POST["isim"], $_POST["email"], $_POST["mesaj"])) {
+    $adsoyad = $conn->real_escape_string($_POST["isim"]);
+    $email = $conn->real_escape_string($_POST["email"]);
+    $mesaj = $conn->real_escape_string($_POST["mesaj"]);
+
+    $stmt = $conn->prepare("INSERT INTO iletisim_mesajlari (ad_soyad, email, mesaj) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $adsoyad, $email, $mesaj);
+    
+    if ($stmt->execute()) {
+        echo "<script>alert('Mesajınız başarıyla iletildi!');</script>";
+    } else {
+        echo "<script>alert('Mesaj gönderilemedi: ".$conn->error."');</script>";
+    }
+    $stmt->close();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Game Wiki</title>
-
+  <script src="https://kit.fontawesome.com/fb08b6ca2d.js" crossorigin="anonymous"></script>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1f1c2c, #928dab);
+      padding-top: 0;
+      padding-top: 0 !important;
+      margin: 0;
+      padding: 0;
     }
-    header {
-      background-color:black;
-      color: transparent;
-      color: #fff;
-      display: flex;
-      position: fixed;
-      width: 100%;
-      align-items: center;
-      justify-content: space-between;
-      padding: 15px 30px;
-    }
-    .logo {
-      font-size: 1.8rem;
-      font-weight: bold;
-      color: #00ffe1;
-      text-decoration: none;
-      flex: 1;
-    }
-    nav {
-      flex: 2;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 1rem;
-      transition: color 0.3s;
-    }
-    nav a:hover {
-      color: #00ffe1;
-    }
-    .search-bar {
-      flex: 1;
-      display: flex;
-      justify-content: flex-end;
-    }
-    .search-bar input {
-      width: 80%;
-      padding: 8px 12px;
-      border-radius: 20px;
-      border: none;
-      outline: none;
-      font-size: 1rem;
-    }
+
+
+
     @media (max-width: 768px) {
       nav {
-        display: none;
+        flex-direction: column;
+        align-items: center;
       }
       .search-bar input {
         width: 100%;
@@ -71,85 +52,61 @@
     }
 
     main {
-  padding: 40px 30px;
-}
+      padding: 0px 30px 40px;
+     
+    }
 
-h1 {
-  text-align: center;
-  margin-bottom: 40px;
-  font-size: 2.5rem;
-  color: #00ffe1;
-}
+    h1 {
+      text-align: center;
+      margin-top: 0px;
+      margin-bottom: 15px;
+      font-size: 2.5rem;
+      color: #00ffe1;
+      margin-top: 10px;
+     
+    }
 
-.card-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-}
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
 
-.card {
-  background-color: #1f1f1f;
-  border-radius: 10px;
-  overflow: hidden;
-  transition: transform 0.3s;
-  
+    .card {
+      background-color: #1f1f1f;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
 
+    .card:hover {
+      transform: translateY(-5px);
+    }
 
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit:fill;
+    }
 
-}
+    .card-content {
+      padding: 15px;
+    }
 
-.card:hover {
-  transform: translateY(-5px);
-}
+    .card-content h3 {
+      margin-bottom: 10px;
+      font-size: 1.4rem;
+      color: #00ffe1;
+    }
 
-.card img {
-  width: 280px;
-  height: 180px;
-  object-fit: cover;
-}
-
-.card h3 {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-
-.card-content {
-  padding: 15px;
-}
-
-.card-content h3 {
-  margin-bottom: 10px;
-  font-size: 1.4rem;
-  color: #00ffe1;
-}
-
-.card-content p {
-  font-size: 0.95rem;
-  color: #ccc;
-}
-
-
-
+    .card-content p {
+      font-size: 0.95rem;
+      color: #ccc;
+    }
   </style>
 </head>
 <body>
 
-<header>
-  <a href="#" class="logo">GameWiki</a>
-
-  <nav>
-    <a href="#">Ana Sayfa</a>
-    <a href="#">Oyunlar</a>
-    <a href="hakkinda.php">Hakkında</a>
-    <a href="iletişim.php">İletişim</a>
-  </nav>
-
-  <div class="search-bar">
-    <input type="text" placeholder="Oyun ara...">
-  </div>
-</header>
 <main>
     <h1 style="margin-top: 50px;">Popüler Oyunlar</h1>
   
@@ -157,7 +114,7 @@ h1 {
      
       <div class="card">
          <a href="kategori/the-witcher-3.html">
-        <img src="https://upload.wikimedia.org/wikipedia/en/0/0c/Witcher_3_cover_art.jpg" alt="The Witcher 3">
+        <img src="images/tw3.jpg" alt="The Witcher 3">
         <div class="card-content">
           <h3>The Witcher 3: Wild Hunt</h3>
           <p>Geniş açık dünyası ve derin hikayesiyle unutulmaz bir rol yapma deneyimi sunuyor.</p>
@@ -171,7 +128,7 @@ h1 {
         <div class="card-content">
           <h3>Grand Theft Auto V</h3>
           <p>Devasa bir şehirde özgürce dolaşabileceğin aksiyon dolu bir açık dünya macerası.</p>
-         
+        
         </a>
         </div>
       
@@ -249,32 +206,7 @@ h1 {
       </div>
     </div>
   </main>
-  
+
 </body>
 </html>
-
-
-<?php
-
-include("db.php"); 
-
-if(isset($_POST["isim"], $_POST["email"], $_POST["mesaj"]))
-{
-  $adsoyad=$_POST["isim"];
-  $email= $_POST["email"];
-  $mesaj=$_POST["mesaj"];
-
-  $ekle="INSERT INTO iletişim (AdSoyad, Email, Mesaj) VALUES ('".$adsoyad."','".$email."','".$mesaj."')";
-
-  if($conn->query($ekle)===true)
-  {
-    echo "<script>alert('Mesajınız Başarı ile iletilmiştir')</script>";
-
-  }
-  else{
-    echo("mesajınız iletilmedi");
-  }
-
-}
-
-?>
+<?php include("footer.php");?>

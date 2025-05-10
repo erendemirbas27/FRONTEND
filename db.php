@@ -1,8 +1,9 @@
 <?php
+
 $host = "localhost";
 $user = "root";
 $pass = "";
-$dbname = "gamewiki";
+$dbname = "gamewiki_db";
 
 // Bağlantı oluştur
 $conn = new mysqli($host, $user, $pass, $dbname);
@@ -15,4 +16,8 @@ if ($conn->connect_error) {
 
 // Karakter setini ayarla
 $conn->set_charset("utf8");
+
+
+
 ?>
+
